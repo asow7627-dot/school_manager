@@ -12,3 +12,18 @@ L'application met en place une architecture MVC/MVT, avec des vues HTTP et le ro
 ```bash
 git clone <URL_DU_DEPOT>
 cd school_manager
+## Réponses aux questions théoriques (Section 44)
+1. **Pourquoi un environnement virtuel ?**  
+   Pour isoler les dépendances et versions de bibliothèques propres à ce projet, évitant les conflits avec d'autres projets.
+2. **Pourquoi Django a besoin de Python ?**  
+   Django est un framework entièrement écrit en Python ; l'interpréteur Python est indispensable pour exécuter son code.
+3. **Différence entre un projet et une application Django ?**  
+   Un projet est le conteneur global (configuration, base de données, routes principales). Une application est un module métier spécifique et réutilisable (ex: `students`).
+4. **Quel est le rôle de `urls.py` ?**  
+   C'est l'aiguilleur d'adresses (routeur) : il associe chaque URL demandée à la fonction vue correspondante.
+5. **Quel est le rôle de `views.py` ?**  
+   C'est le contrôleur : il reçoit la requête HTTP, effectue la logique et retourne une réponse HTTP au navigateur.
+6. **Que se passe-t-il lorsque le navigateur demande `/students/` ?**  
+   Le navigateur envoie une requête HTTP GET -> Django consulte `urls.py` -> appelle la fonction `student_list` dans `views.py` -> la fonction renvoie une `HttpResponse` affichée dans le navigateur.
+7. **Pourquoi utilise-t-on Git ?**  
+   Pour suivre l'historique des modifications, sécuriser le code et collaborer facilement.
