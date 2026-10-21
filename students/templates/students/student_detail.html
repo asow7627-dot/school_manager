@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ student.first_name }} {{ student.last_name }}{% endblock %}
+{% block content %}
+    <a href="{% url 'student_list' %}">← Retour à la liste</a>
+    <h1>{{ student.first_name }} {{ student.last_name|upper }}</h1>
+    <p>Numéro : {{ student.id }}</p>
+    <p>Classe : {{ student.classe }}</p>
+    <p>Téléphone : {{ student.phone|default:"Non renseigné" }}</p>
+    <p>Statut : {% if student.active %}Actif{% else %}Inactif{% endif %}</p>
+{% endblock %}
