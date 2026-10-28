@@ -4,9 +4,9 @@ from django.http import Http404
 # Données temporaires des étudiants
 STUDENTS = [
     {"id": 1, "first_name": "Awa", "last_name": "Diop", "classe": "L1", "active": True, "phone": "77 123 45 67"},
-    {"id": 2, "first_name": "Moussa", "last_name": "Fall", "classe": "L2", "active": True},
-    {"id": 3, "first_name": "Fatou", "last_name": "Ndiaye", "classe": "L1", "active": False},
-    {"id": 4, "first_name": "Ibrahima", "last_name": "Sow", "classe": "L3", "active": True},
+    {"id": 2, "first_name": "Moussa", "last_name": "Fall", "classe": "L2", "active": True, "phone": "77 124 45 67"},
+    {"id": 3, "first_name": "Fatou", "last_name": "Ndiaye", "classe": "L1", "active": False, "phone": "77 125 45 67"},
+    {"id": 4, "first_name": "Ibrahima", "last_name": "Sow", "classe": "L3", "active": True, "phone": "77 126 45 67"},
 ]
 
 # Données temporaires des enseignants
