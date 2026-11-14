@@ -1,20 +1,90 @@
 {% extends "base.html" %}
+
 {% block title %}Étudiants · School Manager{% endblock %}
+
 {% block content %}
-    <h1>Liste des étudiants</h1>
-    <p>{{ students|length }} étudiant{{ students|length|pluralize }}</p>
-    <table>
-        <tr><th>N°</th><th>Prénom</th><th>Nom</th><th>Classe</th><th>Statut</th></tr>
+
+<h1>Liste des étudiants</h1>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Rechercher un étudiant..."
+        value="{{ query }}"
+    >
+
+    <label for="classe">Filtrer par classe :</label>
+
+    <select name="classe" id="classe">
+        <option value="">Toutes les classes</option>
+
+        {% for c in classes %}
+            <option value="{{ c }}" {% if classe == c %}selected{% endif %}>
+                {{ c }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Rechercher</button>
+
+    <a href="{% url 'students:list' %}">Réinitialiser</a>
+
+</form>
+
+<p>
+    {{ students|length }} étudiant{{ students|length|pluralize }}
+    inscrit{{ students|length|pluralize }}.
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Classe</th>
+            <th>Téléphone</th>
+            <th>Statut</th>
+            <th>Détails</th>
+        </tr>
+    </thead>
+
+    <tbody>
         {% for student in students %}
         <tr>
             <td>{{ student.id }}</td>
-            <td><a href="{% url 'student_detail' student.id %}">{{ student.first_name }}</a></td>
+            <td>{{ student.first_name }}</td>
             <td>{{ student.last_name|upper }}</td>
-            <td><a href="{% url 'students_by_class' student.classe %}">{{ student.classe }}</a></td>
-            <td>{% if student.active %}Actif{% else %}Inactif{% endif %}</td>
+            <td>{{ student.email|default:"Non renseigné" }}</td>
+            <td>
+               <a href="{% url 'students:by_class' student.classe %}">
+                    {{ student.classe }}
+                </a>
+            </td>
+            <td>{{ student.phone|default:"Non renseigné" }}</td>
+            <td>
+                {% if student.active %}
+                    Actif
+                {% else %}
+                    Inactif
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'students:detail' student.id %}">
+                    Voir le profil
+                </a>
+            </td>
         </tr>
+
         {% empty %}
-        <tr><td colspan="5">Aucun étudiant inscrit.</td></tr>
+        <tr>
+            <td colspan="8">Aucun étudiant inscrit pour le moment.</td>
+        </tr>
         {% endfor %}
-    </table>
+    </tbody>
+</table>
+
 {% endblock %}

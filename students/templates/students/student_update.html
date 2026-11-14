@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Modifier un étudiant · School Manager{% endblock %}
+
+{% block content %}
+
+<h1>Modifier les informations de l'étudiant</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Enregistrer les modifications</button>
+
+    <a href="{% url 'students:detail' student.id %}">
+        Annuler
+    </a>
+</form>
+
+{% endblock %}

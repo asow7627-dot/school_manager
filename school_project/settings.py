@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'students',   # 👈 Juste 'students' avec un 's' à la fin, sans django.contrib
+
+    'students',
+    'teachers',
+    'pages',
 ]
 
 MIDDLEWARE = [

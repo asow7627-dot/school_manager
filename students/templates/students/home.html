@@ -3,8 +3,64 @@
 {% block title %}Accueil · School Manager{% endblock %}
 
 {% block content %}
+
+<section class="hero-section">
+
     <h1>Bienvenue dans School Manager</h1>
-    <p>Établissement : <strong>{{ school_name }}</strong></p>
-    <p>Nombre de classes : {{ nb_classes }}</p>
-    <a href="{% url 'student_list' %}">Voir la liste des étudiants</a>
+
+    <p class="hero-description">
+        Une plateforme moderne et intuitive pour simplifier
+        la gestion des informations scolaires.
+    </p>
+
+    <p>
+        Établissement :
+        <strong>{{ school_name }}</strong>
+    </p>
+
+</section>
+
+<section class="dashboard-section">
+
+    <h2>Vue d'ensemble</h2>
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>Étudiants</h3>
+            <p class="stat-number">{{ nb_students }}</p>
+            <p>Étudiants inscrits dans l'établissement.</p>
+          <a href="{% url 'students:list' %}">Voir les étudiants →</a>   
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Enseignants</h3>
+            <p class="stat-number">{{ nb_teachers }}</p>
+            <p>Enseignants enregistrés dans l'établissement.</p>
+            <a href="{% url 'teachers:list' %}">Voir les enseignants →</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Classes</h3>
+            <p class="stat-number">{{ nb_classes }}</p>
+            <p>Nombre de classes enregistrées.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="about-preview">
+
+    <h2>Une gestion scolaire simplifiée</h2>
+
+    <p>
+        School Manager centralise les informations scolaires
+        afin de faciliter leur consultation et leur organisation.
+    </p>
+
+    <a href="{% url 'pages:about' %}">En savoir plus →</a>
+
+</section>
+
 {% endblock %}
