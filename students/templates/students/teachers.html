@@ -13,6 +13,10 @@
         enregistré{{ teachers|length|pluralize }}.
     </p>
 
+    <a href="{% url 'teachers:create' %}" class="btn-add">
+        + Ajouter un enseignant
+    </a>
+
     <table>
         <thead>
             <tr>
@@ -21,22 +25,31 @@
                 <th>Nom</th>
                 <th>Matière enseignée</th>
                 <th>Adresse e-mail</th>
+                <th>Téléphone</th>
+                <th>Action</th>
             </tr>
         </thead>
 
         <tbody>
             {% for teacher in teachers %}
             <tr>
-                <td>{{ teacher.id }}</td>
+               <td>{{ forloop.counter }}</td>
                 <td>{{ teacher.first_name }}</td>
                 <td>{{ teacher.last_name|upper }}</td>
                 <td>{{ teacher.subject }}</td>
                 <td>{{ teacher.email }}</td>
+                <td>{{ teacher.phone|default:"Non renseigné" }}</td>
+
+                <td>
+                    <a href="{% url 'teachers:detail' teacher.pk %}" class="btn-edit">
+                        Voir le profil
+                    </a>
+                </td>
             </tr>
 
             {% empty %}
             <tr>
-                <td colspan="5">
+                <td colspan="7">
                     Aucun enseignant n'est enregistré pour le moment.
                 </td>
             </tr>

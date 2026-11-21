@@ -1,3 +1,4 @@
+
 from django.db import models
 
 
@@ -6,6 +7,7 @@ class Teacher(models.Model):
     last_name = models.CharField("Nom", max_length=100)
     email = models.EmailField("Email", unique=True)
     subject = models.CharField("Matière", max_length=100)
+    phone = models.CharField("Téléphone", max_length=20, blank=True)
 
     class Meta:
         ordering = ["last_name"]

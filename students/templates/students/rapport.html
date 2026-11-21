@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Rapport d'Analyse - Teranga Distribution{% endblock %}
+
+{% block content %}
+<div style="max-width: 1000px; margin: auto; padding: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; background: #f4f6f7; padding: 20px; border-radius: 8px; border-left: 5px solid #d35400; margin-bottom: 30px;">
+        <div>
+            <h1 style="margin: 0;">📊 Rapport d'Analyse : Teranga Distribution</h1>
+            <p style="margin: 5px 0 0 0; color: #555;">Présentation complète (10 diapositives) — Performance Commerciale 2024–2025</p>
+        </div>
+        <a href="{% static 'students/rapport_teranga.pdf' %}" download="Rapport_Teranga_Distribution.pdf" 
+           style="background-color: #d35400; color: white; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+            ⬇️ Télécharger le PDF
+        </a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 25px;">
+        <img src="{% static 'students/slides/Diapositive1.PNG' %}" alt="Diapositive 1" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive2.PNG' %}" alt="Diapositive 2" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive3.PNG' %}" alt="Diapositive 3" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive4.PNG' %}" alt="Diapositive 4" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive5.PNG' %}" alt="Diapositive 5" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive6.PNG' %}" alt="Diapositive 6" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive7.PNG' %}" alt="Diapositive 7" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive8.PNG' %}" alt="Diapositive 8" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive9.PNG' %}" alt="Diapositive 9" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <img src="{% static 'students/slides/Diapositive10.PNG' %}" alt="Diapositive 10" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+    </div>
+</div>
+{% endblock %}

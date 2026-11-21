@@ -18,6 +18,18 @@ class StudentForm(forms.ModelForm):
 
         widgets = {
             "birth_date": forms.DateInput(
-                attrs={"type": "date"}
+                attrs={"type": "date"},
+                format="%Y-%m-%d"
             ),
         }
+
+    def clean_phone(self):
+        phone = self.cleaned_data.get("phone", "")
+        phone = phone.replace(" ", "")
+
+        if phone and (not phone.isdigit() or len(phone) != 9):
+            raise forms.ValidationError(
+                "Le numéro de téléphone doit contenir exactement 9 chiffres."
+            )
+
+        return phone

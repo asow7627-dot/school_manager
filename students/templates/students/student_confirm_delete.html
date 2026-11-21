@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Supprimer un étudiant{% endblock %}
+
+{% block content %}
+
+<h1>Confirmation de suppression</h1>
+
+<p>
+    Voulez-vous vraiment supprimer cet étudiant ?
+</p>
+
+<div>
+    <strong>{{ student.first_name }} {{ student.last_name }}</strong>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <button type="submit">
+        Oui, supprimer
+    </button>
+
+    <a href="{% url 'students:detail' student.id %}">
+        Annuler
+    </a>
+</form>
+
+{% endblock %}

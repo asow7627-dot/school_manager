@@ -9,12 +9,35 @@
     <title>{% block title %}School Manager{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'students/style.css' %}?v=2">
+    <style>
+        .btn-doc {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-left: 8px;
+            background-color: #1f618d;
+            color: #ffffff !important;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .btn-doc.pdf {
+            background-color: #d35400;
+        }
+        .btn-doc:hover {
+            opacity: 0.85;
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
-        <strong>School Manager</strong>
+        <strong>
+    <a href="{% url 'pages:home' %}" style="color: inherit; text-decoration: none;">
+        School Manager
+    </a>
+</strong>
 
         <nav>
             {% url 'pages:home' as home_url %}
@@ -29,10 +52,28 @@
             <a href="{{ teachers_url }}" {% if request.path == teachers_url %}class="active"{% endif %}>Enseignants</a>
 
             <a href="{{ about_url }}" {% if request.path == about_url %}class="active"{% endif %}>À propos</a>
+
+            <!-- Bouton 1 : Accès au Notebook HTML avec menu -->
+<a href="{% url 'pages:notebook_teranga' %}" class="btn-doc">
+    📊 Notebook Python
+</a>
+
+
+            <!-- Bouton 2 : Accès au Rapport PDF -->
+            <a href="{% url 'pages:rapport_teranga' %}" target="_blank" class="btn-doc pdf">
+                📄 Rapport PDF
+            </a>
         </nav>
     </header>
 
     <main>
+       {% if messages %}
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %} 
         {% block content %}{% endblock %}
     </main>
 

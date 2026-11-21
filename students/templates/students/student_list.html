@@ -6,33 +6,38 @@
 
 <h1>Liste des étudiants</h1>
 
-<form method="GET">
+<div class="student-toolbar">
 
-    <input
-        type="text"
-        name="q"
-        placeholder="Rechercher un étudiant..."
-        value="{{ query }}"
-    >
+    <a href="{% url 'students:create' %}" class="btn-inscription">
+        + Inscrire un étudiant
+    </a>
 
-    <label for="classe">Filtrer par classe :</label>
+    <form method="GET" class="student-search">
 
-    <select name="classe" id="classe">
-        <option value="">Toutes les classes</option>
+        <input
+            type="text"
+            name="q"
+            placeholder="Rechercher un étudiant..."
+            value="{{ query }}"
+        >
 
-        {% for c in classes %}
-            <option value="{{ c }}" {% if classe == c %}selected{% endif %}>
-                {{ c }}
-            </option>
-        {% endfor %}
-    </select>
+        <select name="classe" id="classe">
+            <option value="">Toutes les classes</option>
 
-    <button type="submit">Rechercher</button>
+            {% for c in classes %}
+                <option value="{{ c }}" {% if classe == c %}selected{% endif %}>
+                    {{ c }}
+                </option>
+            {% endfor %}
+        </select>
 
-    <a href="{% url 'students:list' %}">Réinitialiser</a>
+        <button type="submit">Rechercher</button>
 
-</form>
+        <a href="{% url 'students:list' %}">Réinitialiser</a>
 
+    </form>
+
+</div>
 <p>
     {{ students|length }} étudiant{{ students|length|pluralize }}
     inscrit{{ students|length|pluralize }}.
@@ -55,7 +60,7 @@
     <tbody>
         {% for student in students %}
         <tr>
-            <td>{{ student.id }}</td>
+            <td>{{ forloop.counter }}</td>
             <td>{{ student.first_name }}</td>
             <td>{{ student.last_name|upper }}</td>
             <td>{{ student.email|default:"Non renseigné" }}</td>

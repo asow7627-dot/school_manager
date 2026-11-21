@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Notebook Python - Teranga Distribution{% endblock %}
+
+{% block content %}
+<div style="max-width: 1200px; margin: auto; padding: 15px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; background: #f4f6f7; padding: 15px 20px; border-radius: 8px; border-left: 5px solid #1f618d; margin-bottom: 20px;">
+        <div>
+            <h2 style="margin: 0;">📊 Notebook Python : Analyse des Ventes Teranga</h2>
+            <p style="margin: 4px 0 0 0; color: #555;">Code Python, nettoyage des données et visualisations</p>
+        </div>
+        <a href="{% static 'students/analyse_ventes_teranga_ASSIETOU_SOW.html' %}" target="_blank"
+           style="background-color: #1f618d; color: white; padding: 10px 16px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+            ↗️ Ouvrir en plein écran
+        </a>
+    </div>
+
+    <iframe src="{% static 'students/analyse_ventes_teranga_ASSIETOU_SOW.html' %}" 
+            style="width: 100%; height: 80vh; border: 1px solid #ddd; border-radius: 8px; background: white;">
+    </iframe>
+</div>
+{% endblock %}

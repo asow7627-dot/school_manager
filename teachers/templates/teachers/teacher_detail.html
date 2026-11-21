@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Profil de l'enseignant{% endblock %}
+
+{% block content %}
+
+<section class="teachers-section">
+
+    <h1>Profil de l'enseignant</h1>
+
+    <div class="teacher-profile">
+
+        <p><strong>Prénom :</strong> {{ teacher.first_name }}</p>
+
+        <p><strong>Nom :</strong> {{ teacher.last_name }}</p>
+
+        <p><strong>Matière enseignée :</strong> {{ teacher.subject }}</p>
+
+        <p><strong>Adresse e-mail :</strong> {{ teacher.email }}</p>
+
+        <p><strong>Numéro de téléphone :</strong>
+            {{ teacher.phone|default:"Non renseigné" }}
+        </p>
+
+    </div>
+
+    <div class="teacher-actions">
+
+        <a href="{% url 'teachers:update' teacher.pk %}" class="btn-edit">
+            Modifier
+        </a>
+
+        <a href="{% url 'teachers:delete' teacher.pk %}" class="btn-delete">
+            Supprimer
+        </a>
+
+        <a href="{% url 'teachers:list' %}">
+            Retour à la liste
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

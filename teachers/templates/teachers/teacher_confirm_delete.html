@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Supprimer un enseignant{% endblock %}
+
+{% block content %}
+
+<section class="teachers-section">
+
+    <h1>Confirmer la suppression</h1>
+
+    <p>
+        Voulez-vous vraiment supprimer
+        <strong>{{ teacher.first_name }} {{ teacher.last_name }}</strong> ?
+    </p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn-delete">
+            Oui, supprimer
+        </button>
+
+        <a href="{% url 'teachers:list' %}" class="btn-edit">
+            Annuler
+        </a>
+    </form>
+
+</section>
+
+{% endblock %}
